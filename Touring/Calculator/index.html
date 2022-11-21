@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
   <link type="image/png" rel="icon"
     href="https://cdn2.iconfinder.com/data/icons/ios7-inspired-mac-icon-set/512/Calculator_512.png" />
-  <script src="./calculator.js" type="text/javascript"></script>
-  <script src="./display.js" type="text/javascript"></script>
+  <script src="./calculator.js" type="text/javascript" defer></script>
+  <script src="./display.js" type="text/javascript" defer></script>
   <script src="./script.js" type="text/javascript" defer></script>
   <title>JS Calculator | Light & Dark Mode Without eval()</title>
 </head>
@@ -44,56 +44,52 @@
       <p id="result" class="result"></p>
     </div>
     <div class="buttons">
-      <div class="box">
-        <button id="" class="btn yellow" onclick="display.deleteAll()">
-          C
-        </button>
-        <button class="btn" onclick="display.negate()">±</button>
-        <button data-btn="operator" class="btn" value="percent">%</button>
-        <button data-btn="operator" class="btn gray yellow" value="divide">
-          /
-        </button>
-      </div>
-      <div class="box">
-        <button data-btn="number" class="btn">7</button>
-        <button data-btn="number" class="btn">8</button>
-        <button data-btn="number" class="btn">9</button>
-        <button data-btn="operator" class="btn gray yellow" value="multiply">
-          *
-        </button>
-      </div>
-      <div class="box">
-        <button data-btn="number" class="btn">4</button>
-        <button data-btn="number" class="btn">5</button>
-        <button data-btn="number" class="btn">6</button>
-        <button data-btn="operator" class="btn gray yellow" value="substract">
-          -
-        </button>
-      </div>
-      <div class="box">
-        <button data-btn="number" class="btn">1</button>
-        <button data-btn="number" class="btn">2</button>
-        <button data-btn="number" class="btn">3</button>
-        <button data-btn="operator" class="btn gray yellow" value="add">
-          +
-        </button>
-      </div>
-      <div class="box">
-        <button data-btn="number" class="btn">.</button>
-        <button data-btn="number" class="btn">0</button>
-        <button data-btn="operator" class="btn gray yellow" value="equal">
-          =
-        </button>
-        <button class="btn gray yellow" onclick="display.delete()">
-          &larr;
-        </button>
-      </div>
-    </div>
-    <div id="log" class="history hide" name="hide"></div>
-    <div id="trash" name="hideTrash">
-      <button onclick="display.deleteHistory()" class="trash">
-        <i class="uil uil-trash-alt icon"></i>
+      <button id="" class="btn yellow" onclick="display.deleteAll()">
+        C
       </button>
+      <button class="btn" onclick="display.negate()">±</button>
+      <button data-btn="operator" class="btn" value="percent">%</button>
+      <button class="btn gray yellow" onclick="display.delete()">
+        &larr;
+      </button>
+
+      <button data-btn="number" class="btn">7</button>
+      <button data-btn="number" class="btn">8</button>
+      <button data-btn="number" class="btn">9</button>
+
+      <button data-btn="operator" class="btn gray yellow" value="divide">
+        /
+      </button>
+      <button data-btn="number" class="btn">4</button>
+      <button data-btn="number" class="btn">5</button>
+      <button data-btn="number" class="btn">6</button>
+
+      <button data-btn="operator" class="btn gray yellow" value="multiply">
+        *
+      </button>
+      <button data-btn="number" class="btn">1</button>
+      <button data-btn="number" class="btn">2</button>
+      <button data-btn="number" class="btn">3</button>
+
+      <button data-btn="operator" class="btn gray yellow" value="substract">
+        -
+      </button>
+      <button data-btn="number" class="btn">.</button>
+      <button data-btn="number" class="btn">0</button>
+      <button data-btn="operator" class="btn gray yellow" value="equal">
+        =
+      </button>
+      <button data-btn="operator" class="btn gray yellow" value="add">
+        +
+      </button>
+
+    </div>
+    <div id="log" class="history hide" name="hide">
+      <div id="trash" name="hideTrash">
+        <button onclick="display.deleteHistory()" class="trash">
+          <i class="uil uil-trash-alt icon"></i>
+        </button>
+      </div>
     </div>
   </div>
 </body>

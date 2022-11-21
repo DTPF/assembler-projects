@@ -41,7 +41,7 @@
 
 /***************************************************** PRINCIPAL STYLES */
 .main {
-  width: 320px;
+  width: 360px;
   margin: 20px auto;
   font-family: "Montserrat", sans-serif;
   color: black;
@@ -59,7 +59,8 @@
 
 .main .full-content {
   position: relative;
-  height: 250px;
+  height: 60%;
+  min-height: 270px;
   margin-bottom: 10px;
   /* border-radius: 30px; */
   border-top-right-radius: 30px;
@@ -98,6 +99,7 @@
 .icon {
   font-size: 1.8em;
 }
+
 .icon2 {
   font-size: 0.8em;
   color: var(--color-moon);
@@ -192,21 +194,18 @@
 }
 
 .main .buttons {
-  width: 100%;
-}
-
-.main .buttons .box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: baseline;
+  height: 40%;
+  background-color: var(--color-btn-numbers-background);
+  border-radius: 40px;
 }
 
 .main .buttons .btn {
-  width: 25%;
   font-family: "Montserrat", sans-serif;
   display: flex;
   min-height: 50px;
-  min-width: 50px;
   color: var(--color-btn-numbers);
   justify-content: center;
   align-items: center;
@@ -215,6 +214,7 @@
   border-radius: 40px;
   background-color: var(--color-btn-numbers-background);
   margin: 0.1em 0.7em 0.7em 0.7em;
+  padding: 5px;
   cursor: pointer;
 }
 
@@ -242,6 +242,8 @@
 .main .history {
   background-color: var(--main-background-color);
   color: var(--color-primary);
+  border-bottom-left-radius: 30px !important;
+  border-bottom-right-radius: 30px;
 }
 
 /* show or hide the history */
@@ -253,11 +255,10 @@ div[name="hide"] {
 div[name="show"] {
   display: flex;
   flex-flow: column;
-
-  height: 303.5px;
+  height: 350px;
   position: absolute;
   top: 270px;
-  width: 320px;
+  width: 360px;
   opacity: 1;
   transition: height 2s ease-in-out, opacity 2s;
   overflow-y: auto;
@@ -279,14 +280,14 @@ div[name="show"] p {
 }
 
 #trash {
-  background-color: var(--main-background-color);
+  background-color: transparent;
 }
 
 .trash {
-    background-color: var(--main-background-color);
-    color: var(--color-btn-numbers);
-    border: 0;
-    cursor: pointer;
+  background-color: transparent;
+  color: var(--color-btn-numbers);
+  border: 0;
+  cursor: pointer;
 }
 
 div[name="hideTrash"] {
@@ -295,22 +296,15 @@ div[name="hideTrash"] {
 
 div[name="showTrash"] {
   position: absolute;
-  width: 320px;
-  top: 573.5px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-  transition: height 1.9s ease-in-out, opacity 1.9s;
-
-}
-
-div[name="showTrash"] button{
-  margin-left: 45%;
+  top: 5px;
+  right: 5px;
 }
 
 #evalMode {
   text-decoration: line-through;
   color: var(--color-btn-numbers);
-  font-weight: 800;
+  font-weight: bolder;
+  padding: 10px 0;
 }
 
 /***************************************************** STYLES SLIDER THEME */
@@ -365,15 +359,15 @@ div[name="showTrash"] button{
   bottom: 0;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--input-checked-slider);
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px var(--input-checked-slider);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateY(29px);
   -ms-transform: translateY(29px);
   transform: translateY(29px);
@@ -437,15 +431,13 @@ input:checked + .slider:before {
 
   .main .buttons {
     margin: 0 auto;
+    align-items: baseline;
     height: 40vh;
   }
 
-  .main .buttons .box:first-child {
-    padding-top: 10px;
-  }
+  .main .buttons .btn {
+    margin: auto 10px;
 
-  .main .buttons>.box {
-    height: 19%;
   }
 
   .main .history {
@@ -455,30 +447,47 @@ input:checked + .slider:before {
     height: auto;
     border-radius: 0;
     animation: fadeIn .6s alternate ease-in-out !important;
+
   }
 
   .main .past-result p {
     max-width: 75vw;
     margin-bottom: 1000px;
   }
+
+  #trash {
+    background-color: transparent;
+    position: absolute;
+    width: 100vw;
+    text-align: right;
+    padding-top: 10px;
+  }
+
+  .trash {
+    background-color: var(--main-background-color);
+    color: var(--color-btn-numbers);
+    border: 0;
+    cursor: pointer;
+  }
+
+  div[name="hideTrash"] {
+    display: none;
+  }
+
+  div[name="showTrash"] {
+    position: absolute;
+    top: 0;
+  }
 }
 
 @media (max-width:380px) {
-  .main .full-content {
-    height: 50vh;
-  }
-
-  .main .buttons {
-    height: 50vh;
-  }
-
-  .main .buttons>.box {
-    height: 20%;
+  .main .buttons .btn {
+    margin: auto 7px;
   }
 }
 
 /************ KEYFRAMES ******************/
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {opacity: 0}
+  to {opacity: 1}
 }
