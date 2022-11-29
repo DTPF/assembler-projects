@@ -108,16 +108,16 @@ class Product {
     }
 
     resetProduct() {
-        this.productName = '';
-        this.price = '';
-        this.color = '';
-        this.batteryCapacity = '';
-        this.image = '';
+        this.productName = 'Scooter MQT45BK';
+        this.price = '695 €';
+        this.color = 'black';
+        this.batteryCapacity = '10000mAh';
+        this.image = './assets/products/black/black-1.png';
 
-        productTitle.textContent = 'Scooter MQT45BK';
-        productPrice.textContent = '695 €';
-        changeImageColor('black');
+        productTitle.textContent = this.productName;
+        productPrice.textContent = this.price;
+        changeImageColor(this.color);
         resetThumbnails();
-        product.getThumbnails('black');
+        product.getThumbnails(this.color);
     }
 }

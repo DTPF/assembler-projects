@@ -43,18 +43,7 @@ function registeringPopup() {
             registeringPopupDiv.classList.remove('hide');
             registeringPopupDiv.classList.add('show-popup');
             if (secondsToFinish <= 0) {
-                productPage.classList.remove('hide');
-                orderPage.classList.add('hide');
-                headerMainOrder.classList.add('hide');
-                headerMainProduct.classList.remove('hide');
-                footerMainOrder.classList.add('hide');
-                footerMainProduct.classList.remove('hide');
-                registeringPopupDiv.classList.remove('show-popup');
-                registeringPopupDiv.classList.add('hide-popup');
-                footer.classList.remove('hide');
-                
-                clearInterval(popupInterval);
-                document.getElementById('div-confirm').classList.remove('form-step-active');
+                addProductEventListeners();
 
                 // Reset objects
                 user.resetUser();
@@ -66,8 +55,19 @@ function registeringPopup() {
 
                 // Reset forms
                 resetAllForms();
+                clearInterval(popupInterval);
 
-                addProductEventListeners();
+                productPage.classList.remove('hide');
+                orderPage.classList.add('hide');
+                headerMainOrder.classList.add('hide');
+                headerMainProduct.classList.remove('hide');
+                footerMainOrder.classList.add('hide');
+                footerMainProduct.classList.remove('hide');
+                registeringPopupDiv.classList.remove('show-popup');
+                registeringPopupDiv.classList.add('hide-popup');
+                footer.classList.remove('hide');
+                
+                document.getElementById('div-confirm').classList.remove('form-step-active');
             }
         } else {
             registeringPopupDiv.classList.remove('show-popup');
