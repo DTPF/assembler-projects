@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/product-page.css" />
+    <link rel="stylesheet" href="./css/order-page.css" />
+    <link rel="stylesheet" href="./css/registering-time-popup.css" />
+    <link rel="stylesheet" href="./css/confirm-order.css" />
+    <script type="text/javascript" src="./js/domVariables.js" defer></script>
+    <script type="text/javascript" src="./js/domMethods.js" defer></script>
+    <script type="text/javascript" src="./js/Product.js" defer></script>
+    <script type="text/javascript" src="./js/User.js" defer></script>
+    <script type="text/javascript" src="./js/Shipment.js" defer></script>
+    <script type="text/javascript" src="./js/Order.js" defer></script>
+    <script type="text/javascript" src="./js/domEventListeners.js" defer></script>
+    <script type="text/javascript" src="./js/registeringTimePopup.js" defer></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <title>Electric Scooter Factory | Shopping Wizard</title>
+</head>
+
+<body>
+    <div id="registerinTimePopup" class="registering-time-popup hide"></div>
+
+    <!-- MAC OS WINDOW -->
+    <div class="container faux">
+        <div class="window">
+            <div class="mac--top">
+                <span class="close-button"></span>
+                <span class="min-button"></span>
+                <span class="max-button"></span>
+
+                <!-- RED HEADER -->
+                <header class="header">
+                    <div class="header-main-product">
+                        <div class="menu-main-product-logo">
+                            <i class="uil uil-streering"></i>
+                            <a class="logo-main" href="index.html">Electric Scooter Factory</a>
+                        </div>
+                        <div class="menu-main-product-shop">
+                            <i class="uil uil-store"></i>
+                            <a class="shop-main" href="index.html">Shop</a>
+                        </div>
+                    </div>
+                    <div class="header-main-order hide">
+                        <div class="progressbar">
+                            <div class="progress" id="progress"></div>
+                            <div class="progress-step progress-step-active" data-title="Profile"></div>
+                            <div class="progress-step" data-title="Adress"></div>
+                            <div class="progress-step" data-title="Shipping"></div>
+                            <div class="progress-step" data-title="Confirmation"></div>
+                            <div class="progress-step" data-title="Finish"></div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- CONTENT INSIDE MAC OS WINDOW -->
+                <div id="inFram">
+                    <!-- PRODUCT PAGE -->
+                    <article class="product-page grid-container">
+                        <div id="productThumbnails" class="product-thumbnails"></div>
+                        <div id="productImage" class="product-image">
+                            <img src="./assets/products/black/black-1.png" alt="black" />
+                        </div>
+                        <div class="product-info">
+                            <h2 id="productTitle">Scooter MQT45BK</h2>
+                            <p id="productPrice">695 €</p>
+                            <form id="productForm">
+                                <div>
+                                    <label for="battery">Capacidad de la bateria</label>
+                                    <select id="batterySelect" name="battery">
+                                        <option value="10000mAh" selected>10000mAh</option>
+                                        <option value="20000mAh">20000mAh</option>
+                                        <option value="30000mAh">30000mAh</option>
+                                    </select>
+                                </div>
+                                <label for="color" class="hide">Color</label>
+                                <input type="radio" name="color" value="black" checked />
+                                <input type="radio" name="color" value="white" />
+                                <input type="radio" name="color" value="blue" />
+                                <input type="radio" name="color" value="red" />
+                                <br />
+                                <input type="submit" value="Buy" />
+                            </form>
+                        </div>
+                    </article>
+                    <!-- ORDER PAGE -->
+                    <section class="order-form hide">
+                        <!-- profile page -->
+                        <div id="div-profile" class="form-step form-step-active" data-target="profile">
+                            <div class="profile order-form-margin">
+                                <div class="profileForm">
+                                    <h2>Profile</h2>
+                                    <form id="profileForm">
+                                        <div class="profileGroup">
+                                            <div class="formEntry">
+                                                <label for="username">Username</label><br />
+                                                <input type="text" id="username" class="usernameInput" required />
+                                                <span data-target="username" class="error"></span>
+                                            </div>
+                                            <div class="formEntry">
+                                                <label for="email">Email</label><br />
+                                                <input type="email" id="email" class="emailInput" required />
+                                                <span data-target="email" class="error"></span>
+                                            </div>
+                                            <div class="formEntry">
+                                                <label for="password">Password</label><br />
+                                                <input type="password" id="password" class="passwordInput" required />
+                                                <span data-target="password" class="error"></span>
+                                            </div>
+                                            <div class="formEntry">
+                                                <label for="password2">Confirm password</label><br />
+                                                <input type="password" id="password2" class="passwordConfirmInput"
+                                                    required />
+                                                <span data-target="password2" class="error"></span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- address page -->
+                        <div id="div-address" class="form-step" data-target="address">
+                            <div class="address order-form-margin">
+                                <div class="form">
+                                    <h2>Address</h2>
+                                    <form id="addressForm">
+                                        <div class="adress-group">
+                                            <div class="formEntry">
+                                                <label for="firstname">First name</label>
+                                                <input type="text" id="firstname" name="firstname"
+                                                    class="firstnameInput" required />
+                                                <span data-target="firstname" class="error"></span>
+                                            </div>
+                                            <div class="formEntry">
+                                                <label for="lastname">Last name</label>
+                                                <input type="text" id="lastname" name="lastname" class="lastnameInput"
+                                                    required />
+                                                <span data-target="lastname" class="error"></span>
+                                            </div>
+                                            <div class="formEntry">
+                                                <label for="birthday">Birthday</label>
+                                                <input type="date" id="birthday" name="birthday" class="birthdayInput"
+                                                    placeholder="dd/mm/yyyy" required />
+                                                <span data-target="birthday" class="error"></span>
+                                            </div>
+                                            <div class="formEntry">
+                                                <label for="addressOne">Adress 1</label>
+                                                <input type="text" id="addressOne" name="addressOne"
+                                                    class="addressOneInput" required />
+                                                <span data-target="addressOne" class="error"></span>
+                                            </div>
+                                            <div class="formEntry">
+                                                <label for="addressTwo">Adress 2</label>
+                                                <input type="text" id="addressTwo" name="addressTwo"
+                                                    class="addressTwoInput" />
+                                                <span data-target="addressTwo" class="error"></span>
+                                            </div>
+                                            <div class="formEntry">
+                                                <label for="postalCode">Postal Code</label>
+                                                <input type="text" id="postalCode" class="postalCodeInput" required />
+                                                <span data-target="postalCode" class="error"></span>
+                                            </div>
+                                            <div class="formEntry">
+                                                <label for="country">Country</label>
+                                                <select type="text" id="country" name="country" class="countrySelect"
+                                                    required>
+                                                    <option value="" selected disabled></option>
+                                                    <option value="Andorra">Andorra</option>
+                                                    <option value="Espanya">España</option>
+                                                    <option value="Francia">Francia</option>
+                                                    <option value="Alemania">Alemania</option>
+                                                    <option value="Grecia">Grecia</option>
+                                                </select>
+                                                <span data-target="country" class="error"></span>
+                                            </div>
+                                            <div class="formEntry together">
+                                                <label for="phone">Phone</label>
+                                                <div class="phoneInput">
+                                                    <select name="countryPhone" id="countryPhone"
+                                                        class="country-phone-width" disabled>
+                                                        <option data-country="" value="" selected disabled></option>
+                                                        <option data-country="Andorra" value="+376">
+                                                            +376
+                                                        </option>
+                                                        <option data-country="Espanya" value="+34">
+                                                            +34
+                                                        </option>
+                                                        <option data-country="Francia" value="+33">
+                                                            +33
+                                                        </option>
+                                                        <option data-country="Alemania" value="+49">
+                                                            +49
+                                                        </option>
+                                                        <option data-country="Grecia" value="+30">
+                                                            +30
+                                                        </option>
+                                                    </select>
+                                                    <input type="tel" id="phone" name="phone" class="phone" required />
+                                                </div>
+                                                <span data-target="phone" class="error"></span>
+                                            </div>
+                                            <div class="formEntryCheckbox">
+                                                <label class="container-adress">This is my regular address
+                                                    <input type="checkbox" id="regularAddress" name="regularAddress"
+                                                        class="phone" />
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- shipping page -->
+                        <div id="div-shipment" class="form-step" data-target="ship">
+                            <div class="shipping order-form-margin">
+                                <form id="shipmentForm">
+                                    <h2 class="ship-title">Shipping</h2>
+                                    <div class="ship-type">
+                                        <h3>Shipping types:</h3>
+                                        <div class="form-entry">
+                                            <label for="freeShipment" class="container-shipping">Free Shipment (72H)
+                                                <input type="radio" name="radioShipType" id="freeShipment" value="72"
+                                                    required>
+                                                <span class="checkmark-shipping"></span>
+                                            </label>
+                                        </div>
+                                        <div class="form-entry">
+                                            <label for="extraShipment" class="container-shipping">Extra shipping (48H)
+                                                <span class="price-shipment">4,99 €</span>
+                                                <input type="radio" name="radioShipType" id="extraShipment" value="48"
+                                                    required>
+                                                <span class="checkmark-shipping"></span>
+                                            </label>
+                                        </div>
+                                        <div class="form-entry">
+                                            <label for="premiumShipment" class="container-shipping">Premium (24H) <span
+                                                    class="price-shipment">9,99 €</span>
+                                                <input type="radio" name="radioShipType" id="premiumShipment" value="24"
+                                                    required>
+                                                <span class="checkmark-shipping"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="ship-date" id="shipDate">
+                                        <h4>Your order will arrive:</h4>
+                                        <p class="estimate-date">ESTIMATE DELIVERY DATE:</p>
+                                        <span class="delivery-date">Between <span id="minDate"></span> and
+                                            <span id="maxDate"></span>
+                                        </span>
+                                    </div>
+
+
+                                    <div class="formEntryCheckbox">
+                                        <label class="container-adress">Is it a gift?
+                                            <input type="checkbox" id="isGift" value="isGift" />
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="ship-gift-options" id="shipGiftOptions">
+                                        <label class="ship-gift-message-title" for="giftTitle">Gift title</label>
+                                        <input type="text" id="giftTitle" name="giftTitle" />
+                                        <label class="ship-gift-message-title" for="giftMessage">Gift message</label>
+                                        <textarea name="giftMessage" id="giftMessage" rows="6"></textarea>
+                                        <span data-target="giftMessage" class="error"></span>
+                                        <label>Gift wrapper image</label>
+                                        <input type="file" name="giftImageFile" id="giftImageFile" hidden="hidden"
+                                            accept="image/png, image/jpeg" />
+                                        <button type="button" id="giftImageFile-button">CHOOSE A FILE</button>
+                                        <span id="custom-text">No file chosen, yet.</span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- confirmation page -->
+                        <div id="confirmOrder" class="form-step" data-target="confirm">
+                            <div class="confirmation">
+                                <h2 class="confirmation-page-h2">Order Details</h2>
+                                <div class="confirm-order">
+                                    <div class="grid-confirm-order-img">
+                                        <h2 class="confirmation-page-title">Your purchase</h2>
+                                        <div class="confirm-order-img">
+                                            <img id="confirmOrderImg" />
+                                        </div>
+                                    </div>
+                                    <div class="grid-confirm-order-info-img">
+                                        <span class="confirm-order-label">Product name: </span>
+                                        <h2 id="confirmOrderProduct" class="confirm-order-info-img-product">Product</h2>
+                                        <span class="confirm-order-label">Battery capacity: </span>
+                                        <p id="confirmOrderBattery" class="confirm-order-info-img-product">Battery</p>
+                                        <span class="confirm-order-label">Chosen color: </span>
+                                        <p id="confirmOrderColor" class="confirm-order-info-img-product">Color</p>
+                                    </div>
+                                    <div class="grid-confirm-order-form">
+                                        <form id="confirmOrderForm">
+                                            <label class="container-adress">I have read and agreed to the terms and
+                                                conditions
+                                                <input type="checkbox" id="confirmOrderCheckbox" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <p class="error hide" id="confirmOrderTermsMessage"></p>
+                                            <input type="submit" value="Buy now" class="confirm-order-buy">
+                                        </form>
+                                    </div>
+                                    <div class="grid-confirm-order-information">
+                                        <h3 class="confirmation-page-title">Order Info</h3>
+                                        <div class="grid-confirm-order-invoice">
+                                            <div class="grid-invoice-text">
+                                                <div class="invoice-text">Subtotal</div>
+                                                <div class="invoice-text">Shipping Cost</div>
+                                                <div class="invoice-text">Discount</div>
+                                                <div class="invoice-text-total">Total</div>
+                                            </div>
+                                            <div class="grid-invoice-result">
+                                                <div class="invoice-result"><span id="confirmOrderPrice"
+                                                        class="invoice-result">699</span>€
+                                                </div>
+                                                <div class="invoice-result"><span id="confirmOrderShipping"
+                                                        class="invoice-result">9</span>€
+                                                </div>
+                                                <div class="invoice-result"><span class="invoice-result">0</span>€
+                                                </div>
+                                                <div class="invoice-result-total"><span id="confirmOrderTotalPrice"
+                                                        class="invoice-result-total">708</span>€</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- thank you page -->
+                        <div id="divThanksPage" class="form-step">
+                            <div class="thanks-page order-form-margin">
+                                <div class="thanks-title">
+                                    <img src="assets/PartyPopperEmoji.gif" alt="Party Popper Emoji"
+                                        style="width:300px; height:300px;">
+                                    <h2 class="thanks-title-h2">Your order is complete!</h2>
+                                    <p class="thanks-title-p">You will be receiving a confirmation email with order
+                                        details.</p>
+                                </div>
+                                <div>
+                                    <div class="thanks-your-purchase">
+                                        <h3 class="thanks-page-title">Personal details</h3>
+                                        <div class="grid-thanks-page-person">
+                                            <div class="grid-thanks-page-person-1">
+                                                <span class="confirm-order-label">User name: </span>
+                                                <p id="thanksName" class="confirm-order-info-img-product">User name
+                                                </p>
+                                            </div>
+                                            <div class="grid-thanks-page-person-2">
+                                                <span class="confirm-order-label">Address: </span>
+                                                <h2 id="thanksAddress" class="confirm-order-info-img-product">
+                                                    Address</h2>
+                                            </div>
+                                            <div class="grid-thanks-page-person-3">
+                                                <span class="confirm-order-label">Email: </span>
+                                                <h2 id="thanksEmail" class="confirm-order-info-img-product">Email
+                                                </h2>
+                                            </div>
+                                            <div class="grid-thanks-page-person-4">
+                                                <span class="confirm-order-label">Postal code: </span>
+                                                <p id="thanksPostalCode" class="confirm-order-info-img-product">
+                                                    Postal code
+                                                </p>
+                                            </div>
+                                            <div class="grid-thanks-page-person-5">
+                                                <span class="confirm-order-label">Phone number: </span>
+                                                <p id="thanksPhoneNumber" class="confirm-order-info-img-product">
+                                                    Phone
+                                                    number</p>
+                                            </div>
+                                            <div class="grid-thanks-page-person-6">
+                                                <span class="confirm-order-label">Country: </span>
+                                                <p id="thanksCountry" class="confirm-order-info-img-product">Country
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-thanks-page">
+                                        <div class="grid-thanks-page-purchase">
+                                            <div class="grid-confirm-order-img">
+                                                <h2 class="thanks-page-title">Your purchase</h2>
+                                                <div class="confirm-order-img">
+                                                    <img id="thanksImage" />
+                                                </div>
+                                            </div>
+                                            <div class="grid-confirm-order-info-img">
+                                                <span class="confirm-order-label">Product name: </span>
+                                                <h2 id="thanksModel" class="confirm-order-info-img-product">Product</h2>
+                                                <span class="confirm-order-label">Battery capacity: </span>
+                                                <p id="thanksBattery" class="confirm-order-info-img-product">Battery</p>
+                                                <span class="confirm-order-label">Chosen color: </span>
+                                                <p id="thanksColor" class="confirm-order-info-img-product">Color</p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-thanks-information thanks-page-width">
+                                            <h3 class="thanks-page-title">Payment details</h3>
+                                            <div class="grid-confirm-order-invoice">
+                                                <div class="grid-invoice-text">
+                                                    <div class="invoice-text">Subtotal</div>
+                                                    <div class="invoice-text">Shipping Cost</div>
+                                                    <div class="invoice-text">Discount</div>
+                                                    <div class="invoice-text-total">Total</div>
+                                                </div>
+                                                <div class="grid-invoice-result">
+                                                    <div class="invoice-result"><span id="thanksPrice"
+                                                            class="invoice-result">699</span>€
+                                                    </div>
+                                                    <div class="invoice-result"><span id="thanksShipping"
+                                                            class="invoice-result">9</span>€
+                                                    </div>
+                                                    <div class="invoice-result"><span class="invoice-result">0</span>€
+                                                    </div>
+                                                    <div class="invoice-result-total"><span id="thanksTotalPrice"
+                                                            class="invoice-result-total">708</span>€</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="visible-date visible">
+                                    <p class="estimate-date">ESTIMATE DELIVERY DATE:</p>
+                                    <span class="delivery-date" id="thanksArriveDate">Between 21 of July of 2020
+                                        14:00h and 21 of July of
+                                        2020 20:00h.</span>
+                                </div><br>
+                                <div class="visible-date visible">Your order took: <span
+                                        id="registrationMinutes">3</span> minutes and <span
+                                        id="registrationSeconds">23</span> seconds
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <footer id="footer" class="footer">
+                    <div class="footer-main">
+                        <div class="footer-main-product">
+                            <p>
+                                Copyright © 2022 Electric Scooter Factory S.L. All rights
+                                reserved.
+                            </p>
+                        </div>
+                        <div class="footer-main-order hide">
+                            <div class="btns-group">
+                                <button href="#" class="btn-exit" id="btnExit">Exit</button>
+                                <a href="#" class="btn" id="btnPrev">Previous</a>
+                                <input type="submit" value="Enviar" class="btn" id="finalSubmit" />
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+                <!-- MAC OS WINDOW DIV'S-->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
