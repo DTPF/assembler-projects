@@ -1,0 +1,505 @@
+/*************** Root ***************/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+:root {
+    --background-color: rgb(226, 224, 224);
+    --box-shadow: 0 0 7px 0 black;
+    --padding-box: 5px 10px;
+    --color: black;
+    --font-family: "Montserrat", monospace;
+}
+
+body {
+
+    font-family: 'Luckiest Guy', cursive;
+    color: #222;
+    font-size: 30px;
+    letter-spacing: 2px;
+    padding: 0;
+    margin: 0;
+}
+
+/************ VARIABLES GENERALES ***************/
+
+.game-window {
+    display: none;
+    transform-origin: top;
+    animation: animate 0.5s;
+}
+
+.game-window-active {
+    display: block;
+}
+
+.hide-content {
+    display: none !important;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 65px;
+    background-color: rgb(56, 37, 10);
+    color: #fff;
+    padding: 15px 0;
+    margin: 0;
+    -webkit-box-shadow: 0px 0px 107px -25px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 107px -25px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 107px -25px rgba(0, 0, 0, 0.75);
+}
+
+.background-web {
+    position: relative;
+    background: url(../assets/background.webp) no-repeat center center fixed;
+    background-size: cover;
+    height: calc(100vh - 108.8px);
+    filter: blur(0px);
+}
+
+
+.hangman-div-responsive {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 1000px;
+    max-height: 500px;
+    margin: auto;
+    align-items: center;
+}
+
+
+/*************** Choose user name ***************/
+.game-window .user {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.game-window .user h2 {
+    padding: 0;
+    margin: 0;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 4px 0 #fff, -4px 0 #fff, 0 4px #fff, 0 -4px #fff,
+        2px 2px #fff, -2px -2px #fff, 2px -2px #fff, -2px 2px #fff;
+}
+
+.game-window .user input[type='text'] {
+    width: 400px;
+    padding: 7px 0;
+    padding-left: 7px;
+    border: 5px solid #b28f69;
+    background-color: #f5c88d;
+    height: 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Luckiest Guy', cursive;
+    color: black;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+input::placeholder {
+    font-size: 15px;
+    font-family: 'Luckiest Guy', cursive;
+    color: rgb(54, 54, 54);
+}
+
+.button-start {
+    margin-top: 20px;
+    background-image: url('../assets/start.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.game-window .user input[type='submit'] {
+    background: none;
+    font-size: 30px;
+    font-family: 'Luckiest Guy', cursive;
+    height: 80px;
+    border: none;
+    text-align: center;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    color: #fff;
+    cursor: pointer;
+}
+
+#players {
+    display: flex;
+    justify-content: center;
+}
+
+#players input {
+    background-color: #f5c88d;
+    border: none;
+    height: 30px;
+    width: 80px;
+    margin: 20px 5px;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 15px;
+    
+}
+
+/*************** Game ***************/
+.game {
+    width: 650px;
+    margin: 0 20px;
+}
+
+.row-5 {
+    display: flex;
+    justify-content: center;
+}
+
+.row-6 {
+    display: flex;
+    justify-content: center;
+}
+
+.row-with-delete {
+    display: flex;
+    justify-content: center;
+    padding-left: 30px;
+}
+
+.virtual-keyboard input {
+    width: 50px;
+    height: 50px;
+    text-transform: uppercase;
+    background-color: #d10117;
+    color: #eee;
+    border: none !important;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.virtual-keyboard input[type="button"]:disabled {
+    background-color: #f7717f;
+    color: rgb(228, 200, 200);
+    border: none !important;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.virtual-keyboard input:hover {
+    background-color: #a40010;
+    color: #efd569;
+    border: none !important;
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.virtual-keyboard input.delete {
+    width: 70px;
+}
+
+.hangman-image {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hangman-image img {
+    transform: scale(1);
+    margin: -50px 0px -100px 0px;
+}
+
+.hangman-content {
+    text-align: center;
+}
+
+.hangman-game-h2 {
+    font-size: 35px;
+    text-shadow: 4px 0 #fff, -4px 0 #fff, 0 4px #fff, 0 -4px #fff,
+        2px 2px #fff, -2px -2px #fff, 2px -2px #fff, -2px 2px #fff;
+}
+
+.word-spot-light {
+    font-size: 30px;
+    margin: 8px 0;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+/*************** Finish ***************/
+
+.finish-div-total {
+    padding: 40px;
+    background-color: red;
+    color: #fff;
+    text-align: center;
+}
+
+.finish-message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 15px 0;
+}
+
+#playAgainButton {
+    background-color: #f5c88d;
+    margin-top: 10px;
+    font-family: 'Luckiest Guy', cursive;
+    border: none;
+    height: 40px;
+    width: 120px;
+    font-size: 20px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*************** User scores ***************/
+
+.user-scores {
+    background: url(../assets/bandera-roja.png) no-repeat center center;
+    background-size: contain;
+    padding: var(--padding-box);
+    color: var(--color);
+    width: 90%;
+    height: 620px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#userScoresList {
+    margin-top: 30px;
+    font-size: 20px;
+    color: white;
+    height: 320px;
+    width: 250px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+#resetScores {
+    background-color: #ecd13d;
+    font-family: 'Luckiest Guy', cursive;
+    border: none;
+    height: 50px;
+    width: 120px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.user-scores-p {
+    font-weight: bold;
+    font-size: 30px;
+    text-shadow: 4px 0 #fff, -4px 0 #fff, 0 4px #fff, 0 -4px #fff,
+        2px 2px #fff, -2px -2px #fff, 2px -2px #fff, -2px 2px #fff;
+}
+
+.user-scores .player-score {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-scores .player-score .name {
+    font-size: 23px;
+    margin: 0;
+    color: #fff;
+}
+
+.user-scores .player-score .status {
+    font-weight: lighter;
+    font-size: 18px;
+    margin: 4px;
+    color: rgb(224, 226, 195);
+}
+
+#currentPlay {
+    background:none !important;
+}
+
+@media screen and (max-width: 350px) {
+    .user-scores {
+        background-size: 120%;
+    }
+
+    .virtual-keyboard input {
+        width: 46px;
+        height: 46px;
+        margin: 2px;
+    }
+}
+
+@media screen and (max-width: 785px) {
+    .user-scores {
+        max-width: 600px;
+        justify-content: center;
+        margin: 80px auto;
+    }
+
+    .background-web {
+        position: relative;
+        background: url(../assets/background.webp) no-repeat center center fixed;
+        background-size: cover;
+        height: calc(155vh - 108.8px);
+    }
+
+    .game-window .user input[type='text'] {
+        width: auto;
+    }
+
+    h1 {
+        font-size: 50px;
+    }
+
+    .game {
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    .virtual-keyboard input {
+        width: 46px;
+        height: 46px;
+        margin: 2px;
+    }
+}
+
+@media screen and (min-width: 785px) {
+    .container {
+        display: grid;
+        grid-template-areas:
+            "a a a"
+            "b c c"
+            "b d d";
+        max-width: 400px;
+    }
+
+    .hangman-game-h2 {
+        grid-area: a;
+    }
+
+    .hangman-image {
+        grid-area: b;
+        scale: 0.7;
+        width: 200px;
+    }
+
+    .word-spot-light {
+        grid-area: c;
+    }
+
+    .virtual-keyboard {
+        grid-area: d;
+        text-align: center;
+        height: auto;
+    }
+
+    .background-web-blur {
+        background-size: 70% 600px;
+        max-height: 600px;
+    }
+
+    .game-window {
+        width: 65%;
+    }
+
+    .user-scores {
+        width: 35%;
+    }
+
+    .user-scores {
+        background-size: 90% 450px;
+    }
+
+    .hangman-div-responsive {
+        display: flex;
+        max-width: 1100px;
+    }
+
+    .virtual-keyboard input {
+        width: 46px;
+        height: 46px;
+        margin: 2px;
+    }
+    
+}
+
+
+@media screen and (min-width: 1050px) {
+    .container {
+        position: relative;
+        display: grid;
+        grid-template-areas:
+            "b a a"
+            "b c c"
+            "d d d";
+        max-width: fit-content;
+    }
+
+    .hangman-game-h2 {
+        grid-area: a;
+    }
+
+    .hangman-image {
+        grid-area: b;
+        height: 100%;
+    }
+
+    .word-spot-light {
+        grid-area: c;
+    }
+
+    .virtual-keyboard {
+        grid-area: d;
+        text-align: center;
+    }
+
+    .row-5 {
+        display: inline;
+    }
+
+    .row-6 {
+        display: inline;
+    }
+
+    .row-with-delete {
+        display: inline;
+        padding-left: 0px;
+    }
+
+    .virtual-keyboard input {
+        margin: 2px;
+    }
+
+    .word-spot-light {
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+    }
+
+    .background-web-blur {
+        background-size: 686px;
+    }
+
+    .hangman-div-responsive {
+        max-height: 500px;
+    }
+
+    .user-scores {
+        background-size: 90%;
+    }
+
+    .virtual-keyboard input {
+        width: 50px;
+        height: 50px;
+        text-transform: uppercase;
+        background-color: #d10117;
+        color: #eee;
+        border: none !important;
+        font-family: 'Luckiest Guy', cursive;
+    }
+}

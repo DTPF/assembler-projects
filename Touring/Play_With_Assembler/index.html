@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script type="text/javascript" src="./js/domVariables.js" defer></script>
+    <script type="text/javascript" src="./js/User.js" defer></script>
+    <script type="text/javascript" src="./js/Game.js" defer></script>
+    <script type="text/javascript" src="./js/eventLinteners.js" defer></script>
+    <script type="text/javascript" src="./js/index.js" defer></script>
+    <title>Play With Assembler</title>
+</head>
+
+<body>
+    <h1>Hangman</h1>
+    <div class="background-web"></div>
+    <div class="hangman-div-responsive">
+        <div id="userDiv" class="game-window game-window-active">
+            <div class="user">
+                <form id="chooseNameForm">
+                    <label for="userName">
+                        <h2>Choose user name</h2>
+                    </label>
+                    <input name="userName" type="text" placeholder="Enter your username" required>
+                    <div class="button-start">
+                        <input type="submit" value="Start">
+                    </div>
+                </form>
+                <div id="players"></div>
+            </div>
+        </div>
+
+        <div id="gameDiv" class="game-window">
+            <div class="game">
+                <div class="container">
+                    <h2 class="hangman-game-h2">Fruits & Vegetables</h2>
+                    <div class="hangman-image">
+                        <img id='hangmanPic' src="assets/images/0.jpg" alt="Hangman">
+                    </div>
+                    <p id="wordSpotlight" class="word-spot-light"></p>
+                    <div class="virtual-keyboard">
+                        <div class="row-5">
+                            <input data-target="alphabet" type="button" value="a">
+                            <input data-target="alphabet" type="button" value="b">
+                            <input data-target="alphabet" type="button" value="c">
+                            <input data-target="alphabet" type="button" value="d">
+                            <input data-target="alphabet" type="button" value="e">
+                        </div>
+                        <div class="row-6">
+                            <input data-target="alphabet" type="button" value="f">
+                            <input data-target="alphabet" type="button" value="g">
+                            <input data-target="alphabet" type="button" value="h">
+                            <input data-target="alphabet" type="button" value="i">
+                            <input data-target="alphabet" type="button" value="j">
+                            <input data-target="alphabet" type="button" value="k">
+                        </div>
+                        <div class="row-5">
+                            <input data-target="alphabet" type="button" value="l">
+                            <input data-target="alphabet" type="button" value="m">
+                            <input data-target="alphabet" type="button" value="n">
+                            <input data-target="alphabet" type="button" value="o">
+                            <input data-target="alphabet" type="button" value="p">
+                        </div>
+                        <div class="row-6">
+                            <input data-target="alphabet" type="button" value="q">
+                            <input data-target="alphabet" type="button" value="r">
+                            <input data-target="alphabet" type="button" value="s">
+                            <input data-target="alphabet" type="button" value="t">
+                            <input data-target="alphabet" type="button" value="u">
+                            <input data-target="alphabet" type="button" value="v">
+                        </div>
+                        <div class="row-with-delete">
+                            <input data-target="alphabet" type="button" value="w">
+                            <input data-target="alphabet" type="button" value="x">
+                            <input data-target="alphabet" type="button" value="y">
+                            <input data-target="alphabet" type="button" value="z">
+                            <input type="button" id="back" value="back" class="delete"
+                                onClick="window.location.reload();">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ** audio background music ** -->
+            <audio loop autoplay>
+                <source src="assets/quizizz32sec.mp3" type="audio/mpeg">
+            </audio>
+
+            <!--// virtual-keyboard -->
+        </div>
+        <div id="finishDiv" class="game-window">
+            <div class="finish">
+                <div class="finish-message" id="finishMessage">
+                    <span>The answer was: <span id="finishMessageAnswer">Word</span></span>
+                    <p id="finishMessageResult">Mark Won in 8 seconds!!!</p>
+                </div>
+                <div id="finishDivTotal" class="finish-div-total">
+                    Wrong Guesses: 6 of 6
+                </div>
+                <button type="button" id="playAgainButton">Play again</button>
+            </div>
+        </div>
+        <div id="userScores" class="user-scores">
+            <p class="user-scores-p">User Scores</p>
+            <div id="userScoresList">
+                <div id="userScoresDiv" class="player-score">
+                    <p id="userScoreName" class="name">Pepe</p>
+                    <p id="userScoreTime" class="status">11 seconds</p>
+                </div>
+            </div>
+            <button type="button" id="resetScores">Reset</button>
+        </div>
+    </div>
+</body>
+
+</html>
